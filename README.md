@@ -28,5 +28,10 @@
     - ```[Number of operands: 2] OP2 <operand1> <operand2> -> Performs Operations on <operand1> and  <operand2>```
     - ```[Number of operands: 3] OP3 <operand1> <operand2> <operand3> -> Performs Operations on <operand1> <operand2> and  <operand3>```
     - ```[Number of operands: 4] OP4 <operand1> <operand2> <operand3> <operand4> -> Performs Operations on <operand1> <operand2> <operand3> and  <operand4>```
+    
+* ### Assembly Directives
+    - ```ORG <address> -> Origin of the code and start loading from <address>```
+    - ```DATA <value> -> Treat <value> as data```
+    - ```Example: Suppose The Code is OP1,1,2,OP2,9,8 Here 2 is Data but it will treated as OPCODE because DATA is Not there Correc Code is OP1,1,DATA,2,OP2,9,8```
 
 * ### Link: [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
