@@ -31,7 +31,7 @@
     
 * ### Assembly Directives
     - ```ORG <address> -> Origin of the code and start loading from <address>```
-    - ```DATA <value> -> Treat <value> as data```
+    - ```DAT  <value> -> Treat <value> as data```
     - ```DATA <N> <value1> <value2> ... <valueN> -> Treat <N> Memory Location <value1> <value2> ... <valueN> as data```
     - ```Example: Suppose The Code is OP1,1,2,OP2,9,8 Here 2 is Data but it will treated as OPCODE because DATA is Not there Correct Code is OP1,1,DATA,2,OP2,9,8```
 
