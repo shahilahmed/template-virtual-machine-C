@@ -3,7 +3,7 @@
 * # Note
     - **This is just a template for creating virtual machine in C**
     - **This Template comes with code disassembly just add the opcode in instructions in data.c**
-    - **You can create several Models like Register Virtaul Machine,Accumaltor Virtaul machine,Stack Virtual Machine etc etc just modify the ```type_vm``` structure and some opcodes*
+    - **You can create several Models like Register Virtaul Machine,Accumaltor Virtaul machine,Stack Virtual Machine etc etc just modify the ```type_vm``` structure and some opcodes**
 
 * ### Registers 
    - PC : Program Counter is used for pointing instruction in the memory executing the instruction and then incrementing itself
