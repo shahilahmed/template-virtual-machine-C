@@ -32,6 +32,6 @@
 * ### Assembly Directives
     - ```ORG <address> -> Origin of the code and start loading from <address>```
     - ```DATA <value> -> Treat <value> as data```
-    - ```Example: Suppose The Code is OP1,1,2,OP2,9,8 Here 2 is Data but it will treated as OPCODE because DATA is Not there Correc Code is OP1,1,DATA,2,OP2,9,8```
+    - ```Example: Suppose The Code is OP1,1,2,OP2,9,8 Here 2 is Data but it will treated as OPCODE because DATA is Not there Correct Code is OP1,1,DATA,2,OP2,9,8```
 
 * ### Link: [Mastering Markdown](https://guides.github.com/features/mastering-markdown/)
