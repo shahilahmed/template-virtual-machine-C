@@ -17,7 +17,7 @@ DEFINATION PART
 
 ***************/
 #define NAME    "Template Virtual Machine"
-#define VERSION "v0.3.0"
+#define VERSION "v0.3.5"
 #define AUTHOR  "Md Shahil Ahmed"
 
 #define TO_KB(value) (value * 1024) 
@@ -41,7 +41,8 @@ enum {
 	
 	MAX_INSTRUCTION = OP4 + 1,
 	
-	DATA    = -3,
+	DATA    = -4,
+	DAT     = -3,
 	ORG     = -2,
 	INVALID = -1
 };

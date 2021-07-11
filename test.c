@@ -25,15 +25,21 @@ void init(void) {
 void load_main(void) {
 	address_main = 128;
 	int code[] = {
-		DATA,876,
-		DATA,567,
-		DATA,-569,
+		DAT,876,
+		DAT,567,
+		DAT,-569,
 		OP3,9,8,-2,
 		OP2,45,67,
-		ORG,512,
+		
+		ORG,33,
 		NOP,
 		OP3,1,2,3,
 		NOP,
+		
+		DAT,1222,
+		DATA,5,1,-87,-12,-11,999,
+		DAT,1999,
+		
 		
 		ORG,128,
 		NOP,
@@ -46,11 +52,11 @@ void load_main(void) {
 		HALT,
 		
 		ORG,64,
-		DATA,12,
-		DATA,13,
-		DATA,0,
-		DATA,78,
-		DATA,1
+		DAT,12,
+		DAT,13,
+		DAT,0,
+		DAT,78,
+		DAT,1
 	};
 	vm_load(vm,code,((sizeof(code)) / sizeof(int)));
 	print_memory(vm->memory,0,vm->max_memory);

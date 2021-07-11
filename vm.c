@@ -42,13 +42,26 @@ type_vm *create_vm(int page) {
 }
 
 void vm_load(type_vm *vm,int *memory,int length) {
-	int index = 0, loc = 0, nargs = 0, opcode;
+	int index = 0, loc = 0, nargs = 0, count, opcode;
 	while(index < length) {
 		opcode = memory[index];
 		if(opcode == ORG) {
 			loc   = memory[index + 1];
 			index = index + 2;
 		} else if(opcode == DATA) {
+			count = memory[index + 1];
+			if(count <= 1) {
+				printf("count %d at loc %d must be greater than 1.",count,loc);
+				exit(1);
+			}
+			index = index + 2;
+			count = index + count;
+			while(index < count) {
+				vm->memory[loc] = memory[index];
+				loc   = loc   + 1;
+				index = index + 1;
+			}
+		} else if(opcode == DAT) {
 			vm->memory[loc] = memory[index + 1];
 			loc   = loc   + 1;
 			index = index + 2;
