@@ -42,15 +42,32 @@ type_vm *create_vm(int page) {
 }
 
 void vm_load(type_vm *vm,int *memory,int length) {
-	int index = 0, loc = 0;
+	int index = 0, loc = 0, nargs = 0, opcode;
 	while(index < length) {
-		if(memory[index] == ORG) {
+		opcode = memory[index];
+		if(opcode == ORG) {
 			loc   = memory[index + 1];
 			index = index + 2;
-		} else {
-			vm->memory[loc]  = memory[index];
+		} else if(opcode == DATA) {
+			vm->memory[loc] = memory[index + 1];
 			loc   = loc   + 1;
-			index = index + 1;
+			index = index + 2;
+		} else {
+			if(opcode >= 0 && opcode <= MAX_INSTRUCTION - 1) {
+				vm->memory[loc]  = opcode;
+				loc   = loc   + 1;
+				index = index + 1;
+				nargs = index + instructions[opcode].nargs;
+				while(index < nargs) {
+					vm->memory[loc]  = memory[index];
+					loc   = loc   + 1;
+					index = index + 1;
+				}
+			} else {
+				vm->memory[loc] = memory[index];
+				loc   = loc   + 1;
+				index = index + 1;
+			}
 		}
 	}
 }
@@ -66,21 +83,27 @@ void vm_execute(type_vm *vm) {
 		case HALT:
 			printf("Performing HALT\n");
 			vm->is_running = 0;
+			//vm->pc = vm->pc + 1;
 			break;
 		case  NOP:
 			printf("Performing NOP\n");
+			//vm->pc = vm->pc + 1;
 			break;
 		case  OP1:
 			printf("Performing OP1\n");
+			//vm->pc = vm->pc + 2;
 			break;
 		case  OP2:
 			printf("Performing OP2\n");
+			//vm->pc = vm->pc + 3;
 			break;
 		case  OP3:
 			printf("Performing OP3\n");
+			//vm->pc = vm->pc + 4;
 			break;
 		case  OP4:
 			printf("Performing OP4\n");
+			//vm->pc = vm->pc + 5;
 			break;
 		default:
 			printf("Unkwown Opcode: %d at memory location %d.\n",opcode,vm->pc);
@@ -143,6 +166,18 @@ void print_disassembly(int *memory,int length) {
 				print_instruction(memory,index,pc);
 				index = index + instructions[opcode].nargs + 1;
 				pc    = pc    + instructions[opcode].nargs + 1;
+				/*
+				printf("    %4d %10s ",pc,instructions[opcode].str);
+				index = index + 1;
+				pc    = pc + 1;
+				old_index = index;
+				while(index < old_index + instructions[opcode].nargs) {
+					printf("%6d ",memory[index]);
+					index = index + 1;
+					pc    = pc + 1;
+				}
+				printf("\n");
+				*/	
 			}
 		}
 	}

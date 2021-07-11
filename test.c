@@ -25,27 +25,35 @@ void init(void) {
 void load_main(void) {
 	address_main = 128;
 	int code[] = {
-		OP3,9,8,2,
+		DATA,876,
+		DATA,567,
+		DATA,-569,
+		OP3,9,8,-2,
 		OP2,45,67,
 		ORG,512,
 		NOP,
 		OP3,1,2,3,
 		NOP,
+		
 		ORG,128,
 		NOP,
 		NOP,
 		NOP,
 		OP1,1,
-		OP3,1,2,3,
+		OP3,1,-2,45,
 		OP2,1,2,
 		OP4,1,2,3,4,
 		HALT,
+		
 		ORG,64,
-		12,
-		13,
-		 0,	
+		DATA,12,
+		DATA,13,
+		DATA,0,
+		DATA,78,
+		DATA,1
 	};
 	vm_load(vm,code,((sizeof(code)) / sizeof(int)));
+	print_memory(vm->memory,0,vm->max_memory);
 	if(!can_vm_run) {
 		print_disassembly(code,((sizeof(code)) / sizeof(int)));
 	}
@@ -73,6 +81,7 @@ void run(void) {
 		print_vm(vm);
 		print_stack(vm);
 	}
+	/*
 	print_vm(vm);
 	print_stack(vm);
 	push(vm,0);
@@ -92,6 +101,7 @@ void run(void) {
 	vm->fp = vm->sp;
 	print_vm(vm);
 	print_stack(vm);
+	*/
 }
 
 void vm_info() {
